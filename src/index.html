@@ -90,7 +90,8 @@
         </section>
     </div>
 
-    <section class="scanner page__scanner background-block">
+    <section class="scanner page__scanner">
+        <div class="scanner__background"></div>
         <div class="container">
             <div class="scanner__content">
                 <div class="scanner__text-content">
@@ -143,6 +144,7 @@
     </div>
     <section class="qr page__qr">
         <div class="qr__wrapper">
+            <div class="qr__background"></div>
             <div class="container">
                 <h2 class="page-header">QR code</h2>
                 <p class="page-text qr__text">No more conflict situations due to wrong
@@ -162,18 +164,21 @@
                 </section>
             </div>
         </div>
-
-        <div class="verification verification-order">
-            <picture class="verification__step--1">
-                <source srcset="img/order-1.png" media="(max-width: 1200px)">
-                <source srcset="img/order-1-desktop.png">
-                <img src="img/order-1.png" alt="step-1">
-            </picture>
-            <picture class="verification__step--2">
-                <source srcset="img/order-2.png" media="(max-width: 1200px)">
-                <source srcset="img/order-2-desktop.png">
-                <img src="img/order-2.png" alt="step-1">
-            </picture>
+        
+        <div class=" verification-order">
+            <div class="verification-order__background"></div>
+            <div class="verification-order__wrapper container">
+                <picture class="verification-order__step--1">
+                    <source srcset="img/order-1.png" media="(max-width: 1200px)">
+                    <source srcset="img/order-1-desktop.png">
+                    <img src="img/order-1.png" alt="step-1">
+                </picture>
+                <picture class="verification-order__step--2">
+                    <source srcset="img/order-2.png" media="(max-width: 1200px)">
+                    <source srcset="img/order-2-desktop.png">
+                    <img src="img/order-2.png" alt="step-1">
+                </picture>
+            </div>
         </div>
     </section>
 

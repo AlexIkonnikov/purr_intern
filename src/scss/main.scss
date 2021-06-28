@@ -247,22 +247,19 @@ button {
     }
 }
 
-.background-block {
-    background-position: 0 0 ;
-    background-repeat: no-repeat;
-    padding-top: 224px;
-}
-
 .scanner {
-
-    &__content {
-        
-    }
-    background-image: url('../img/background-scanner.jpg');
-    background-size: 100%, 454px, cover;
-    background-repeat: no-repeat;
     &__text {
         margin-bottom: 70px;
+    }
+
+    &__background {
+        width: 100%;
+        min-height: 300px;
+        margin-bottom: -77px;
+        background: linear-gradient(to bottom,#000000 7%, rgba(0, 0, 0, 0.67) 18%,rgba(0, 0, 0, 0) 55%,#000000 80%),
+                    top center url('../img/background-scanner.jpg');
+        background-size: 100%;
+        background-repeat: no-repeat;
     }
 }
 
@@ -274,12 +271,6 @@ button {
             margin-bottom: 55px;
         }
     }
-}
-
-.verification-order {
-    padding-top: 206px;
-    background: url('../img/bcg.png') top right no-repeat,
-                url('../img/Nightlife.svg') right 248px top 114px no-repeat;
 }
 
 .statistics {
@@ -323,17 +314,30 @@ button {
 }
 
 .qr {
-
-    &__wrapper {
+    &__background {
+        width: 100%;
+        min-height: 335px;
+        margin-bottom: -108px;
         background: linear-gradient(to bottom,#000000 6%, rgba(0, 0, 0, 0) 57%,#000000 80%),
-        top center no-repeat url('./../img/qr-background.png');
+                    top center no-repeat url('./../img/qr-background.png');
+        background-size: 100%;
     }
-
-    & h2 {
-        padding-top: 227px;
-    }
-
     &__text {
+        margin-bottom: 50px;
+    }
+}
+
+.verification-order {
+    text-align: center;
+    &__background {
+        width: 100%;
+        min-height: 297px;
+        margin-bottom: -90px;
+        background: url('../img/bcg.png') top right no-repeat,
+                    url('../img/Nightlife.svg') right 248px top 114px no-repeat;
+    }
+
+    &__step--1 img{
         margin-bottom: 50px;
     }
 }
@@ -579,27 +583,6 @@ button {
             background: rgba(0, 0, 0, 0.5);
         }
     }
-}
-
-@keyframes hideText {
-    from {
-      margin-left: 0%;
-      opacity: 1;
-      transform: rotate(0deg);
-    }
-  
-    to {
-      margin-left: 100%;
-      opacity: 0;
-      transform: rotate(90deg);
-    }
-}
-
-.hider {
-    animation-duration: 3s;
-    animation-name: hideText;
-    margin-left: 100%;
-    opacity: 0;
 }
 
 @import "media.scss";

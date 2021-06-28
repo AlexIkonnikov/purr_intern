@@ -21,6 +21,7 @@
             margin-bottom: 293px;
         }
         &__generate-qr-code {
+            margin-top: 49px;
             margin-bottom: 192px;
         }
     }
@@ -159,18 +160,16 @@
     }
 
     .verification {
-
-        &__step--1 img, step--2 img {
-            margin: 0;
-        }
-
         &__step--1 img {
             margin-right: 25px;
         }
     }
 
     .verification-order {
-        background-position: top center;
+        &__step--1 img{
+            margin: 0;
+            margin-right: 20px;
+        }
     }
 
     .notab {
@@ -213,27 +212,6 @@
         }
     }
 
-    .qr {
-        display: flex;
-        max-width: 1440px;
-        margin: 0 auto;
-
-        &__wrapper {
-            background: linear-gradient(to bottom, black 10%, transparent 100%),
-                        linear-gradient(to top, black 5%, transparent 100%),
-                        top right no-repeat url('./../img/qr-background-desktop.png');
-            width: 50%;
-        }
-
-        & h2 {
-            padding-top: 537px;
-        }
-
-        &__text {
-            max-width: 315px;
-        }
-    }
-
     .verification {
         order: 0;
         display: flex;
@@ -245,20 +223,49 @@
         }
     }
 
-    .verification-order {
-        width: 50%;
-        background: url('../img/Nightlife.svg') left 600px top 0px no-repeat,
-                    url('../img/bcg-big.png') top right no-repeat;
-        background-size: 138px auto, auto auto;
-        margin-right: 0;
-        margin-left: -100px;
-        padding-top: 225px;
-        & .verification__step--2 {
-            padding-top: 341px;
+    .qr {
+        display: flex;
+        max-width: 1440px;
+        margin: 0 auto;
+
+        &__wrapper {
+            width: 50%;
         }
 
-        & .verification__step--1 {
+        &__background {
+            min-height: 682px;
+            margin-bottom: -145px;
+            background: linear-gradient(to bottom,#000000 6%, rgba(0, 0, 0, 0) 57%,#000000 80%),
+                        top center no-repeat url('./../img/qr-background-desktop.png');
+            background-size: 100%;
+        }
+        &__text {
+            max-width: 315px;
+        }
+    }
+
+    .verification-order {
+        width: 50%;
+        margin-right: 0;
+
+        &__background {
+            min-height: 617px;
+            margin-bottom: -392px;
+            background: url('../img/Nightlife.svg') left 410px top 0px no-repeat,
+                        url('../img/bcg-big.png') top center no-repeat;
+            background-size: 138px auto, 100%;
+        }
+
+        &__wrapper {
+            display: flex;
+            margin-left: -150px;
+        }
+
+        &__step--1 {
             margin-right: 80px;
+        }
+        &__step--2 {
+            padding-top: 341px;
         }
     }
 
@@ -388,19 +395,20 @@
     }
 
     .scanner {
-        background-image: url('../img/background-scanner-big.png');
+        &__background {
+            margin-bottom: -595px;
+            background: linear-gradient(to bottom,#000000 7%, rgba(0, 0, 0, 0.67) 18%,rgba(0, 0, 0, 0) 55%,#000000 80%),
+                        top center no-repeat url('../img/background-scanner-big.png');
+            background-size: 100%;
+            min-height: 1060px;
+        }
         &__content {
             display: flex;
         }
-
         &__text-content {
             order: 1;
-            padding-top: 390px;
+            padding-top: 360px;
         }
-    }
-
-    .background-block {
-        padding-top: 467px;
     }
 
     .tool {
