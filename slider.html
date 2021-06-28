@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="slider/index.css">
+    <title>Slider</title>
+</head>
+<body>
+    <div class="container slider-container">
+        <div class="content-wrapper">
+            <div class="item"><span>1</span></div>
+            <div class="item"><span>2</span></div>
+            <div class="item"><span>3</span></div>
+            <div class="item"><span>4</span></div>
+            <div class="item"><span>5</span></div>
+            <div class="item"><span>6</span></div>
+            <div class="item"><span>7</span></div>
+            <div class="item"><span>8</span></div>
+            <div class="item"><span>9</span></div>
+            <div class="item"><span>10</span></div>
+        </div>
+        <div class="controls-wrapper">
+            <button data-dir="prev">Prev</button>
+            <button data-dir="next">Next</button>
+        </div>
+    </div>
+    <script src="slider/index.js"></script>
+    <script>
+        const container = document.querySelector('.container');
+        const slider = new Slider(container);
+    </script>
+</body>
+
+</html>
