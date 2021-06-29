@@ -1,39 +1,35 @@
 function Slider(element) {
     const container = element;
-
-    let slideWidth = container.offsetWidth;
+    const slideWidth = container.offsetWidth;
     const belt = container.querySelector(`.content-wrapper`);
     const buttons = container.querySelectorAll(`button`);
-    let slides = container.querySelectorAll(`.item`);
+    const slides = container.querySelectorAll(`.item`);
     belt.style.left = -(slideWidth) + `px`;
 
-    const firstSlideClone = slides[0].cloneNode(true);
-    const lastSlideClone = slides[slides.length - 1].cloneNode(true);
-
     let sliderIsNotMoving = true;
-    let dots = [];
     let prevSlide = 0;
     let activeSlide = 1;
     let stepInPixel = 20;
+    let dots = [];
+
+    const createClone = () => {
+        const firstSlideClone = slides[0].cloneNode(true);
+        const lastSlideClone = slides[slides.length - 1].cloneNode(true);
+        belt.append(firstSlideClone);
+        belt.prepend(lastSlideClone);
+    };
 
     const showFirstSlide = () => {
         activeSlide = 1;
-        belt.style.left = -500 + `px`;
+        belt.style.left = -500;
         setActiveDot();
-    }
+    };
 
     const showLastSlide = () => {
         activeSlide = slides.length;
         belt.style.left = -500 * activeSlide;
         setActiveDot();
     };
-
-    const createClone = () => {
-        belt.append(firstSlideClone);
-        belt.prepend(lastSlideClone);
-    }
-
-    createClone();
 
     const checkDirection = () =>  {
         if (prevSlide < activeSlide) {
@@ -50,7 +46,7 @@ function Slider(element) {
                 stepInPixel = 20;
                 break;
             case 2:
-                stepInPixel = 20;
+                stepInPixel = 25;
                 break;
             case 3:
                 stepInPixel = 50;
@@ -62,8 +58,8 @@ function Slider(element) {
 
     const setPosition = () => {
         sliderIsNotMoving = false;
-        let from = -prevSlide * slideWidth;
-        let to = -activeSlide * slideWidth;
+        let from = - prevSlide * slideWidth;
+        let to = - activeSlide * slideWidth;
         setStep();
         let timer = setInterval(() => {
             from = checkDirection() === `right` ? (from - stepInPixel) : (from + stepInPixel);
@@ -126,22 +122,28 @@ function Slider(element) {
         return list;
     };
 
-    if (slides.length > 1) {
-        container.append(createDots(slides.length));
-    }
+    const init = () => {
+        createClone();
 
-    buttons.forEach((btn) => {
-        btn.addEventListener(`click`, (evt) => {
-            if (evt.target.dataset.dir === `next` && sliderIsNotMoving) {
-                activeSlide += 1;
-                prevSlide = activeSlide - 1;
-                changeSlide();
-            }
-            if (evt.target.dataset.dir === `prev` && sliderIsNotMoving) {
-                activeSlide -= 1;
-                prevSlide = activeSlide + 1;
-                changeSlide();
-            }
-        })
-    });
+        if (slides.length > 1) {
+            container.append(createDots(slides.length));
+        }
+
+        buttons.forEach((btn) => {
+            btn.addEventListener(`click`, (evt) => {
+                if (evt.target.dataset.dir === `next` && sliderIsNotMoving) {
+                    activeSlide += 1;
+                    prevSlide = activeSlide - 1;
+                    changeSlide();
+                }
+                if (evt.target.dataset.dir === `prev` && sliderIsNotMoving) {
+                    activeSlide -= 1;
+                    prevSlide = activeSlide + 1;
+                    changeSlide();
+                }
+            })
+        });
+    };
+
+    init();
 }
