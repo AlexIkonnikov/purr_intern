@@ -19,16 +19,22 @@ function Slider(element) {
         belt.prepend(lastSlideClone);
     };
 
-    const showFirstSlide = () => {
-        activeSlide = 1;
-        belt.style.left = -500;
-        setActiveDot();
+    const isFirstSlideCloneShowed = () => {
+        return activeSlide === (slides.length + 1);
     };
 
-    const showLastSlide = () => {
+    const isLastSlideCloneShowed = () => {
+        return activeSlide < 1;
+    };
+
+    const setFirstSlideActive = () => {
+        activeSlide = 1;
+        belt.style.left = -500;
+    };
+
+    const setLastSlideActive = () => {
         activeSlide = slides.length;
         belt.style.left = -500 * activeSlide;
-        setActiveDot();
     };
 
     const checkDirection = () =>  {
@@ -68,18 +74,30 @@ function Slider(element) {
                 clearTimeout(timer);
                 sliderIsNotMoving = true;
 
-                if (activeSlide === slides.length + 1) {
-                    showFirstSlide();
+                if (isFirstSlideCloneShowed()) {
+                    setFirstSlideActive();
                 }
 
-                if (activeSlide < 1) {
-                    showLastSlide();
+                if (isLastSlideCloneShowed()) {
+                    setLastSlideActive();
                 }
             }
         }, 20);
     };
 
     const setActiveDot = () => {
+        if (isFirstSlideCloneShowed()) {
+            dots[0].classList.add(`dots-wrapper__item--active`);
+            dots[dots.length - 1].classList.remove(`dots-wrapper__item--active`);
+            return;
+        }
+
+        if (isLastSlideCloneShowed()) {
+            dots[0].classList.remove(`dots-wrapper__item--active`);
+            dots[dots.length - 1].classList.add(`dots-wrapper__item--active`);
+            return;
+        }
+
         dots.forEach((dot, index) => {
             if (index === activeSlide - 1) {
                 dot.classList.add(`dots-wrapper__item--active`);
@@ -127,6 +145,9 @@ function Slider(element) {
 
         if (slides.length > 1) {
             container.append(createDots(slides.length));
+        } else {
+            buttons.forEach((btn) => btn.remove());
+            return;
         }
 
         buttons.forEach((btn) => {
